@@ -1,0 +1,8 @@
+<p>client-detail works!</p>
+<div *ngIf="client">
+  <p *ngIf="client.firstName">Nombre del cliente: {{client.firstName}} {{client.lastName}}</p>
+  <p *ngIf="client.rut">Rut: {{client.rut}}</p>
+  <p *ngIf="client.phone">Teléfono: {{client.phone}}</p>
+  <p *ngIf="client.bizName">Nombre de Empresa: {{client.bizName}}</p>
+  <p *ngIf="client.bizRut">Rut de Empresa: {{client.bizRut}}</p>
+</div>

@@ -1,0 +1,174 @@
+<p>datos-detail-shared works!</p>
+<div class="component-margin-top">
+  <table class="table margin-table table-header-rotated border border-3 border-success main-table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col" class="rotate"><div><span>Débito</span></div></th>
+        <th scope="col" class="rotate"><div><span>Crédito</span></div></th>
+        <th scope="col" class="rotate"><div><span>IVA</span></div></th>
+        <th scope="col" class="rotate"><div><span>PPM</span></div></th>
+        <th scope="col" class="rotate"><div><span>Factor</span></div></th>
+        <th scope="col" class="rotate"><div><span>PPM Actualizado</span></div></th>
+        <th scope="col" class="rotate"><div><span>Retención Profesional</span></div></th>
+        <th scope="col" class="rotate"><div><span>Retiro</span></div></th>
+        <th scope="col" class="rotate"><div><span>Factor Retención</span></div></th>
+        <th scope="col" class="rotate"><div><span>Retiro Actualizado</span></div></th>
+        <th scope="col" class="rotate"><div><span>ILA</span></div></th>
+        <th scope="col" class="rotate"><div><span>Neto</span></div></th>
+        <th scope="col" class="rotate"><div><span>Compra</span></div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let row of inputDatos">
+        <tr class="table-bg table-hover align-middle">
+          <th scope="row" class="sm-font"> {{row.mes}} </th>
+          <td class="main-td"><span class="sm-font">{{row.valorDebito}}</span></td>
+          <td class="main-td"><span class="sm-font">{{row.valorCredito}}</span></td>
+          <td class="main-td"><span class="sm-font">{{(row.valorDebito - row.valorCredito)}}</span></td>
+          <td class="main-td"><span class="sm-font">{{row.valorPPM}}</span></td>
+          <td class="main-td"><span class="sm-font">{{row.factor}}</span></td>
+          <td class="main-td"><span class="sm-font">{{roundValue(row.valorPPM * row.factor)}}</span></td>
+          <td class="main-td"><span class="sm-font">{{row.valorRetencion}}</span></td>
+          <td class="main-td"><span class="sm-font">{{row.valorRetiro}}</span></td>
+          <td class="main-td"><span class="sm-font">{{row.factorR}}</span></td>
+          <td class="main-td"><span class="sm-font">{{roundValue(row.valorRetiro * row.factorR)}}</span></td>
+          <td class="main-td"><span class="sm-font">{{row.valorILA}}</span></td>
+          <td class="main-td"><span class="sm-font">{{row.valorNeto}}</span></td>
+          <td class="main-td"><span class="sm-font">{{row.valorCompra}}</span></td>
+        </tr>
+      </ng-container>
+      <tr class="table-success">
+        <th scope="row" class="align-middle">Totales</th>
+        <td class="total-td-sm"><span class="sm-font"> {{totalDebito() | thousandsFormat}} </span></td>
+        <td class="total-td-sm"><span class="sm-font"> {{totalCredito() | thousandsFormat}} </span></td>
+        <td class="total-td-sm"><span class="sm-font"> {{totalIVA() | thousandsFormat}} </span></td>
+        <td class="total-td-sm"><span class="sm-font"> {{totalPPM() | thousandsFormat}} </span></td>
+        <td class="total-td-sm"></td>
+        <td class="total-td-sm"><span class="sm-font"> {{roundValue(totalPPMActualizado()) | thousandsFormat}} </span></td>
+        <td class="total-td-sm"><span class="sm-font"> {{totalRetencion() | thousandsFormat}} </span></td>
+        <td class="total-td-sm"><span class="sm-font"> {{totalRetiro() | thousandsFormat}} </span></td>
+        <td class="total-td-sm"><span class="sm-font"></span></td>
+        <td class="total-td-sm"><span class="sm-font"> {{roundValue(totalRetiroActualizado()) | thousandsFormat}} </span></td>
+        <td class="total-td-sm"><span class="sm-font"> {{totalILA() | thousandsFormat}} </span></td>
+        <td class="total-td-sm"><span class="sm-font"> {{totalNeto() | thousandsFormat}} </span></td>
+        <td class="total-td-sm"><span class="sm-font"> {{totalCompra() | thousandsFormat}} </span></td>
+      </tr>
+    </tbody>
+  </table>  
+</div>
+
+<div class="table-left">
+  <!-- TABLA CALCULO 1 -->
+  <h4>Tabla de Ventas</h4>
+  <table class="table small-table float-left table-bordered">
+    <tbody>
+      <tr class="table-borders">
+        <th scope="row" class="table-bg th-sm">Caja</th>
+        <td class="table-success table-borders"><span>{{roundValue(calculoCaja1()) | thousandsFormat}}</span></td>
+        <td class="table-success table-borders"><span>{{calculoCaja2() | thousandsFormat}}</span></td>
+      </tr>
+      <tr class="table-borders">
+        <th scope="row" class="table-bg th-sm">Ventas</th>
+        <td class="table-success table-borders"><SPan>{{totalNeto() | thousandsFormat}}</SPan></td>
+        <td class="table-success table-borders"><span>{{roundValue(calculoVentas2()) | thousandsFormat}}</span></td>
+      </tr>
+      <tr class="table-borders">
+        <th scope="row" class="table-bg th-sm">IVA</th>
+        <td class="table-success table-borders"></td>
+        <td class="table-success table-borders"><span>{{totalDebito() | thousandsFormat}}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- TABLA CALCULO 2 -->
+<h4>Tabla de Compras</h4>
+<table class="table small-table table-bordered">
+  <tbody>
+    <tr class="table-borders">
+      <th scope="row" class="table-bg th-sm">Mercaderia</th>
+      <td class="table-borders table-success"><span>{{totalCompra() | thousandsFormat}}</span></td>
+      <td class="table-borders table-success"><span>{{roundValue(calculoMercaderia2()) | thousandsFormat}}</span></td>
+    </tr>
+    <tr class="table-borders">
+      <th scope="row" class="table-bg th-sm">ILA</th>
+      <td class="table-borders table-success"><SPan>{{totalILA() | thousandsFormat}}</SPan></td>
+      <td class="table-borders table-success"></td>
+    </tr>
+    <tr class="table-borders">
+      <th scope="row" class="table-bg th-sm">IVA</th>
+      <td class="table-borders table-success"><span>{{totalCredito() | thousandsFormat}}</span></td>
+      <td class="table-borders table-success"></td>
+    </tr>
+    <tr class="table-borders">
+      <th scope="row" class="table-bg th-sm">Caja Haber</th>
+      <td class="table-borders table-success"><span>{{calculoCajaHaber1() | thousandsFormat}}</span></td>
+      <td class="table-borders table-success"><span>{{roundValue(calculoCajaHaber2()) | thousandsFormat}}</span></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="table-left negative-margin-table1">
+  <!-- TABLA CALCULO 4 -->
+  <h4>Tabla de Provisiones</h4>
+  <table class="table small-table table-bordered">
+    <tbody>
+      <tr class="table-borders">
+        <th scope="row" class="table-bg th-sm">PPM</th>
+        <td class="table-success table-borders"><span>{{calculoDiciembre() | thousandsFormat}}</span></td>
+      </tr>
+      <tr class="table-borders">
+        <th scope="row" class="table-bg th-sm">Impuesto por Pagar</th>
+        <td class="table-success table-borders"><SPan>{{calculoDiciembre() | thousandsFormat}}</SPan></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- TABLA CALCULO 3 -->
+<h4>Tabla Pago de Impuestos</h4>
+<table class="table small-table table-bordered">
+  <tbody>
+    <tr class="table-borders">
+      <th scope="row" class="table-bg th-sm">IVA Pagado</th>
+      <td class="table-success table-borders"><span>{{calculoIVAPagado() | thousandsFormat}}</span></td>
+    </tr>
+    <tr class="table-borders">
+      <th scope="row" class="table-bg th-sm">PPM</th>
+      <td class="table-success table-borders"><SPan>{{calculoPPM() | thousandsFormat}}</SPan></td>
+    </tr>
+    <tr class="table-borders">
+      <th scope="row" class="table-bg th-sm">Retención Profesional</th>
+      <td class="table-success table-borders"><span>{{calculoRetProf() | thousandsFormat}}</span></td>
+    </tr>
+    <tr class="table-borders">
+      <th class="table-bg th-sm">Caja Haber</th>
+      <td class="table-success table-borders"><span>{{calculoCajaHaber3() | thousandsFormat}}</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="negative-margin-table2">
+  <!-- TABLA CALCULO 5 -->
+  <h4>Tabla de Gasto</h4>
+  <table class="table small-table table-bordered">
+    <tbody>
+      <tr class="table-borders">
+        <th scope="row" class="table-bg th-sm">Honorarios</th>
+        <td class="table-success table-borders"><span>{{roundValue(calculoHonorarios()) | thousandsFormat}}</span></td>
+      </tr>
+      <tr class="table-borders">
+        <th scope="row" class="table-bg th-sm">Haber de Retencion Profesional</th>
+        <td class="table-success table-borders"><span>{{totalRetencion() | thousandsFormat}}</span></td>
+      </tr>
+      <tr class="table-borders">
+        <th scope="row" class="table-bg th-sm">Haber de Caja</th>
+        <td class="table-success table-borders"><span>{{roundValue(calculoHaberDeCaja()) | thousandsFormat}}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

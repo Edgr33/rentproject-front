@@ -1,0 +1,19 @@
+<div *ngIf="renta">
+  <h1> Formulario de renta de {{renta.nombreCliente}} </h1>
+  <h2> RUT: {{renta.rutCliente}} </h2>
+  <h2> Fecha: {{renta.fecha | date:"dd/MMM/yy"}} </h2>
+  
+  <div class="tab-container-height">
+    <mat-tab-group  mat-align-tabs="center">
+      <div id="test">
+        <mat-tab label="Datos">
+          <!-- <app-tabla-datos class="component-margin-top" [inputDatos]="inputDatos"></app-tabla-datos> -->
+          <app-datos-detail-shared [inputDatos]="inputDatos"></app-datos-detail-shared>
+        </mat-tab>
+        <mat-tab label="Formulario">
+          <app-renta-detail-shared [inputRenta]="inputRenta"></app-renta-detail-shared></mat-tab>
+        </div>
+      </mat-tab-group>
+    </div>
+  </div>
+    

@@ -1,0 +1,30 @@
+.btn-guardar {
+  background-color: rgb(26, 52, 170);
+  color: white;
+  margin-top: 10px;
+}
+
+mat-form-field {
+  width: 220px;
+}
+
+input {
+  font-size: 20px;
+  caret-color: rgb(26, 52, 170);
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(26, 52, 170) !important;
+ }
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: rgb(26, 52, 170) !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: rgb(26, 52, 170) !important;;
+ padding: 2px;
+}

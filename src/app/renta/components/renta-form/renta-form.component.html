@@ -1,0 +1,49 @@
+<p>Renta-form works!</p>
+
+<h1>FORMULARIO DE RENTA</h1>
+
+<p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Nombre del Cliente</mat-label>
+    <input [(ngModel)]="clientName" matInput placeholder="Ej: Nicolas Molina">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Rut del Cliente</mat-label>
+    <input [(ngModel)]="clientRut" matInput placeholder="Ej: 12345678-9">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Fecha</mat-label>
+    <input [(ngModel)]="fecha" matInput placeholder="Ej: 21-02-2019">
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha</mat-label>
+    <input [(ngModel)]="fecha" matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</p>
+
+<div class="tab-container-height">
+  <mat-tab-group mat-align-tabs="center">
+    <div id="test">
+      <mat-tab label="Datos">
+        <app-tabla-datos class="component-margin-top" [inputDatos]="inputDatos"></app-tabla-datos>
+      </mat-tab>
+      <mat-tab label="Formulario">
+        <app-tabla-renta class="component-margin-top" [inputRenta]="inputRenta"></app-tabla-renta>
+      </mat-tab>
+    </div>
+  </mat-tab-group>
+</div>
+
+
+<!-- boton guardar -->
+<div class="d-flex flex-row-reverse">
+  <button mat-raised-button class="btn-guardar" (click)="saveRenta()">Guardar</button>
+</div>

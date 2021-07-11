@@ -1,0 +1,160 @@
+.margin-table {
+  margin: 45px 0px
+}
+
+.component-margin-top {
+  margin-top:70px
+}
+
+.table-header-rotated {
+  border-collapse: collapse;
+  .csstransforms & td {
+    width: 30px;
+  }
+  .no-csstransforms & th {
+    padding: 0px 10px;
+  }
+  .main-td {
+    text-align: right;
+    padding: 0px 5px;
+    border: 1px solid #073272;
+  }
+  th.rotate {
+    height: 90px;
+    white-space: nowrap;
+    // Firefox needs the extra DIV for some reason, otherwise the text disappears if you rotate 
+    > div {
+      transform: 
+        // Magic Numbers
+        translate(10px, 3px)
+        // 45 is really 360-45
+        rotate(338deg);
+      width: 30px;
+    }
+  }
+  th.row-header {
+    padding: 0 10px;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.main-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.main-table td {
+  overflow: hidden;
+}
+
+.table-sm {
+  width: 80%;
+  margin: 10px 0px 
+}
+
+input {
+  width: 67px;
+  font-size: 12px;
+}
+
+.th-font-size {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.row-font {
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+@media only screen and (min-width: 1367px) {
+  input {
+    width: 81px
+  }
+}
+
+.table-bg {
+  background-color: #cfe2ff;
+  transition: 0.1s;
+}
+
+.table-hover:hover {
+  background-color: #00968a;
+}
+
+.row-font {
+  font-size: 12px;
+}
+
+td > input {
+  text-align: right;
+}
+
+td {
+  text-align: right;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+mat-card {
+  background-color: gainsboro;
+}
+
+.th-sm {
+  width: 216px;
+}
+
+.small-table {
+  width: 400px;
+ > thead > tr > th {
+  width: 33.3%;
+  text-align: center;
+  vertical-align: middle;
+  }
+}
+
+.small-table > tbody > tr > td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+h4 {
+  margin: 3px;
+}
+
+.spacer {
+  margin: 36px
+}
+
+.table-left {
+  margin-right: 90px;
+  float: left;
+}
+
+@media only screen and (min-width: 1365px) {
+  .negative-margin-table1 {
+    margin-top: -36px
+  }
+
+  .negative-margin-table2 {
+    margin-top: -106px
+  }
+}
+
+.table-borders {
+  border: 1px solid #073272;
+}
+

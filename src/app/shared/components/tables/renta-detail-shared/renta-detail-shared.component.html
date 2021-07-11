@@ -1,0 +1,103 @@
+<p>renta-detail-shared works!</p>
+  <table class="table margin-table border border-3 border-success">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Débitos</th>
+        <th scope="col">Créditos</th>
+        <th scope="col">Deudor</th>
+        <th scope="col">Acreedor</th>
+        <th scope="col">Activo</th>
+        <th scope="col">Pasivo</th>
+        <th scope="col">Perdida</th>
+        <th scope="col" colspan="2">Ganancia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let row of inputRenta; index as i">
+        <tr>
+          <th scope="row" class="align-middle"> {{row.title}} </th>
+  
+          <!-- main inputs -->
+          <td><span> {{row.val1}} </span></td>
+          <td><span> {{row.val2}} </span></td>
+  
+          <!-- deudor -->
+          <td>
+            <span *ngIf="row.val1 > row.val2"> {{row.val1 - row.val2 | thousandsFormat}} </span>
+            <span *ngIf="!(row.val1 > row.val2)">0</span>
+          </td>
+  
+          <!-- acreedor -->
+          <td>
+            <span *ngIf="row.val1 < row.val2"> {{row.val2 - row.val1 | thousandsFormat}} </span>
+            <span *ngIf="!(row.val1 < row.val2)">0</span>
+          </td>
+  
+          <!-- activo -->
+          <td>
+            <div *ngIf="row.type === 'inventario'">
+              <span *ngIf="row.val1 > row.val2"> {{row.val1 - row.val2}} </span>
+              <span *ngIf="!(row.val1 > row.val2)">0</span>
+            </div>
+            <span *ngIf="!(row.type === 'inventario')">0</span>
+          </td>
+  
+          <!-- pasivo -->
+          <td>
+            <div *ngIf="row.type === 'inventario'">
+              <span *ngIf="row.val1 < row.val2"> {{row.val2 - row.val1}} </span>
+              <span *ngIf="!(row.val1 < row.val2)">0</span>
+            </div>
+            <span *ngIf="!(row.type === 'inventario')">0</span>
+          </td>
+  
+          <!-- perdida -->
+          <td>
+            <div *ngIf="!(row.type === 'inventario')">
+              <span *ngIf="row.val1 > row.val2"> {{row.val1 - row.val2}} </span>
+              <span *ngIf="!(row.val1 > row.val2)">0</span>
+            </div>
+            <span *ngIf="(row.type === 'inventario')">0</span>
+          </td>
+  
+          <!-- ganancia -->
+          <td>
+            <div *ngIf="!(row.type === 'inventario')">
+              <span *ngIf="row.val1 < row.val2"> {{row.val2 - row.val1}} </span>
+              <span *ngIf="!(row.val1 < row.val2)">0</span>
+            </div>
+            <span *ngIf="(row.type === 'inventario')">0</span>
+          </td>
+          <td></td>
+        </tr>
+      </ng-container>
+      <tr class="table-success">
+        <th class="align-middle"> Totales </th>
+        <td> {{totalDebito('asd') | thousandsFormat}} </td>
+        <td> {{totalCredito('asd') | thousandsFormat}} </td>
+        <td> {{totalDeudor('asd') | thousandsFormat}} </td>
+        <td> {{totalAcreedor('asd') | thousandsFormat}} </td>
+        <td> {{totalActivo('asd') | thousandsFormat}} </td>
+        <td> {{totalPasivo('asd') | thousandsFormat}} </td>
+        <td> {{totalPerdida()}} </td>
+        <td colspan="2"> {{totalGanancia() | thousandsFormat}} </td>
+      </tr>
+      <tr class="table-primary">
+        <th class="align-middle" *ngIf="totalPerdida() > totalGanancia()"> Perdida </th>
+        <th class="align-middle" *ngIf="totalPerdida() <= totalGanancia()"> Ganancia </th>
+        <td colspan="4"></td>
+        <td> {{totalInventarioActivo() | thousandsFormat}} </td>
+        <td> {{totalInventarioPasivo() | thousandsFormat}} </td>
+        <td> {{totalResultadoPerdida() | thousandsFormat}} </td>
+        <td colspan="2"> {{totalResultadoGanancia() | thousandsFormat}} </td>
+      </tr>
+      <tr class="table-primary">
+        <td colspan="5"></td>
+        <td> {{valorFinalActivo() | thousandsFormat}} </td>
+        <td> {{valorFinalPasivo() | thousandsFormat}} </td>
+        <td> {{valorFinalPerdida() | thousandsFormat}} </td>
+        <td colspan="2"> {{valorFinalGanancia() | thousandsFormat}} </td>
+      </tr>
+    </tbody>
+  </table>

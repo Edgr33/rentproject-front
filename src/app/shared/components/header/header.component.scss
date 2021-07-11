@@ -1,0 +1,39 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.logo {
+  width: 148px;
+  margin-right: 10px;
+  padding: 7px 5px;
+  text-decoration: none;
+  color: #D2BFAD;
+  transition: 0.5s;
+}
+
+.link {
+  width: 148px;
+  margin-right: 10px;
+  padding: 7px 5px;
+  text-decoration: none;
+  color: #D2BFAD;
+  transition: 0.5s;
+  text-align: center;
+}
+
+mat-toolbar{
+  background-color: #1F232C;
+  margin-bottom: 15px;
+}
+
+ .active {
+  border-radius: 28px;
+  background-color: #D2BFAD;
+  color: black;
+}
+
+a.link:hover {
+  border-radius: 28px;
+  background-color: #D2BFAD;
+  color: black;
+}

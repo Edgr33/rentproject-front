@@ -1,0 +1,44 @@
+.example-container {
+  // position: absolute;
+  height: 700px;
+  width: 100%;
+  background: #eee;
+  margin: 0px 45px
+}
+
+h1 {
+  margin-left: 25px;
+}
+
+.nav-margin {
+  margin-bottom: 500px;
+}
+
+mat-sidenav-content {
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+p {
+  border-top: solid 1px #6661618c;
+  border-bottom: solid 1px #6661618c;
+  padding: 15px 10px;
+  margin: 0;
+}
+
+ p > a{
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  transition: 0.1s;
+  padding: 15px 10px
+}
+
+.active {
+  background-color: #6ec8f9;
+}
+
+p:hover {
+  transition: 0.3s;
+  background-color: #6ec8f9;
+}

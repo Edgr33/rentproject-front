@@ -1,0 +1,45 @@
+<p>client-edit works!</p>
+
+<form [formGroup]="form" (ngSubmit)="editClient($event)">
+  <div class="row">
+    <div class="col-3">
+      <mat-form-field appearance="legacy">
+        <mat-label>Nombre</mat-label>
+          <input matInput formControlName="firstName" type="text" placeholder="Nicolas Andres">
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field appearance="legacy">
+        <mat-label>Apellido</mat-label>
+          <input matInput formControlName="lastName" type="text" placeholder="Molina Sandoval">
+      </mat-form-field>
+    </div>
+  </div>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Rut</mat-label>
+        <input matInput formControlName="rut" type="text" placeholder="12345678-9">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="phone" type="text" placeholder="912345678">
+    </mat-form-field>
+  </p>
+  <div class="row">
+    <div class="col-3">
+      <mat-form-field appearance="legacy">
+        <mat-label>Nombre de Empresa</mat-label>
+          <input matInput formControlName="bizName" type="text" placeholder="E-Store">
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field appearance="legacy">
+        <mat-label>Rut de Empresa</mat-label>
+          <input matInput formControlName="bizRut" type="text" placeholder="74116330-K">
+      </mat-form-field>
+    </div>
+  </div>
+  <button mat-raised-button class="btn-guardar" type="submit">Guardar</button>
+</form>

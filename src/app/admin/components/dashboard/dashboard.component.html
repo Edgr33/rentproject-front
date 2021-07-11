@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<h1>MENU DE USUARIO</h1>
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
+      <p routerLinkActive="active"><a routerLink="client-list">Lista de Clientes</a></p>
+      <p routerLinkActive="active"><a routerLink="form-list">Mis Formularios</a></p>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      
+      <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+<app-footer></app-footer>

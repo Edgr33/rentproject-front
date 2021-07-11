@@ -1,0 +1,38 @@
+<p>renta-list works!</p>
+
+<h1>{{'Mis formularios' | uppercase}}</h1>
+
+<table mat-table [dataSource]="rentas" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let renta"> {{renta.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let renta"> {{renta.nombreCliente}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rut">
+    <th mat-header-cell *matHeaderCellDef> Rut </th>
+    <td mat-cell *matCellDef="let renta"> {{renta.rutCliente}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fecha">
+    <th mat-header-cell *matHeaderCellDef> Fecha </th>
+    <td mat-cell *matCellDef="let renta"> {{renta.fecha | date:"dd/MMM/yy"}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let renta"> 
+      <a mat-raised-button class="btn-guardar" [routerLink]="['/renta/detail/', renta.id]">Ver Detalle</a>
+      <a mat-raised-button class="btn-success" [routerLink]="['/renta/edit/', renta.id]">Editar</a>
+      <button mat-raised-button color="warn" (click)="removeRenta(renta.id)">Eliminar</button>  
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
