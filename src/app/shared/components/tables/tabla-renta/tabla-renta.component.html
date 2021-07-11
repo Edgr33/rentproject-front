@@ -85,7 +85,7 @@
           <!-- deudor -->
           <td>
             <input readonly class="form-control" *ngIf="row.val1 > row.val2"
-              [value]="row.val1 - row.val2 | thousandsFormat" type="number">
+              [value]="row.val1 - row.val2" type="number">
             <input readonly class="form-control" *ngIf="!(row.val1 > row.val2)" [value]="0" type="number">
           </td>
   
