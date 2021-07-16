@@ -18,7 +18,7 @@ export class RentaService {
     {title: 'Retenciones Profesional', type: 'inventario'},
 
     {title: 'Cesantia', type: 'resultado'}, 
-    {title: 'Costo de Venta', type: 'resultado'}
+    {title: 'Costo de Venta', type: 'resultado'},
     {title: 'Intereses y multas', type: 'resultado'}, 
     {title: 'Honorarios', type: 'resultado'}, 
     {title: 'Depreciaciones', type: 'resultado'}, 
