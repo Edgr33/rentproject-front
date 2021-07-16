@@ -13,8 +13,16 @@ export class RentaService {
     {title: 'Caja', type: 'inventario'},  
     {title: 'Capital', type: 'inventario'}, 
     {title: 'Cesantia por Pagar', type: 'inventario'},
+    {title: 'FUT', type: 'inventario'},
+    {title: 'Gastos Particulares', type: 'inventario'},
+    {title: 'Retenciones Profesional', type: 'inventario'},
+
     {title: 'Cesantia', type: 'resultado'}, 
     {title: 'Costo de Venta', type: 'resultado'}
+    {title: 'Intereses y multas', type: 'resultado'}, 
+    {title: 'Honorarios', type: 'resultado'}, 
+    {title: 'Depreciaciones', type: 'resultado'}, 
+    {title: 'Gastos Generales', type: 'resultado'}, 
   ]
 
   datosMensuales = [
